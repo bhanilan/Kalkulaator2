@@ -17,11 +17,11 @@ import android.widget.EditText;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private BroadcastReceiver myReceiver;
-    String display = "";
-    String op = "";
-    String no1 = "";
-    String no2 = "";
-    double n1, n2;
+    private String display = "";
+    private String op = "";
+    private String no1 = "";
+    private String no2 = "";
+    private double n1, n2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         float fontSize = res.getDimension(R.dimen.font_size);
     }
 
+    //Arvu salvestamine muutujasse ja kuvamine ekraanil.
     public void onClick(View view){
         Button button = (Button) view;
         String str = button.getText().toString();
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         editText.setText(display);
     }
 
+    //Numbritega teostatava operatsiooni valik
     public void selectOperation(View view){
         if (!no1.isEmpty() && !no2.isEmpty()) {
             Button button = (Button) view;
@@ -71,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         editText.setText(no1);
     }
 
+    //Arvutusteenuse kasutamine
     public void broadcastIntent(View view){
         if (no1.isEmpty() || no2.isEmpty()) {
             return;
@@ -89,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         op = "";
     }
 
+    //Tehte kustutamine mälust
     public void doDelete(View view){
         EditText editText = (EditText) findViewById(R.id.editText);
         display = "";
@@ -164,6 +168,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //Valideerimine
     public String validation(String str) {
         if (display.isEmpty() && ".".equals(str)) {
             str = "0.";
